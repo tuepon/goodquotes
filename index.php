@@ -1,7 +1,10 @@
 <?php include './config.php'; ?>
 <?php include './classes/database.php'; ?>
 <?php include './classes/quote.php'; ?>
-
+<?php
+  $quotesObj = new Quote();
+  $quotes = $quotesObj->index();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,14 +33,10 @@
 
       <div class="row marketing">
         <div class="col-lg-12">
-          <h3>Subheading</h3>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h3>Subheading</h3>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h3>Subheading</h3>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+          <?php foreach($quotes as $q) : ?>
+            <h3><?php echo $q['text']; ?></h3>
+            <p><?php echo $q['creator']; ?></p>
+          <?php endforeach; ?>
         </div>
       </div>
 
