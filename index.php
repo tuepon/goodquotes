@@ -1,3 +1,7 @@
+<?php include './config.php'; ?>
+<?php include './classes/database.php'; ?>
+<?php include './classes/quote.php'; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
