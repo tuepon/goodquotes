@@ -52,7 +52,7 @@
 
     }
 
-    public function resultSet(){
+    public function resultSet():array{
       try{
         $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);

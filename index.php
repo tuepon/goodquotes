@@ -2,8 +2,12 @@
 <?php include './classes/database.php'; ?>
 <?php include './classes/quote.php'; ?>
 <?php
-  $quoteObj = new Quote();
-  $quotes = $quoteObj->index();
+  try{
+    $quoteObj = new Quote();
+    $quotes = $quoteObj->index();
+  } catch(Throwable $e){
+    echo '<div class="alert alert-danger">'.get_class($e).' on line '.$e->getLine().' of '.$e->getFile().': '.$e->getMessage().'</div>';
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +23,7 @@
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item"><a href="index.php" class="nav-link active">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">New Quote</a></li>
+            <li class="nav-item"><a href="new.php" class="nav-link">New Quote</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">GoodQuotes</h3>
