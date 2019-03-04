@@ -2,8 +2,8 @@
 <?php include './classes/database.php'; ?>
 <?php include './classes/quote.php'; ?>
 <?php
-  $quotesObj = new Quote();
-  $quotes = $quotesObj->index();
+  $quoteObj = new Quote();
+  $quotes = $quoteObj->index();
 ?>
 <!DOCTYPE html>
 <html>
