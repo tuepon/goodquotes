@@ -21,6 +21,16 @@
       echo '<div class="alert alert-danger">'.get_class($e).' on line '.$e->getLine().' of '.$e->getFile().': '.$e->getMessage().'</div>';
     }
   }
+
+  if(isset($_POST['delete'])){
+    $id = $_GET['id'];
+    try{
+      $quoteObj = new Quote();
+      $quoteObj->remove($id);
+    } catch(Throwable $e){
+      echo '<div class="alert alert-danger">'.get_class($e).' on line '.$e->getLine().' of '.$e->getFile().': '.$e->getMessage().'</div>';
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,7 +54,11 @@
 
       <div class="row marketing">
         <div class="col-lg-12">
-          <h2 class="page-header">Add New Quote</h2>
+          <h2 class="page-header">Edit Quote
+            <form class="float-right" method="POST" action="edit.php?id=<?php echo $_GET['id']; ?>">  
+              <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+            </form>
+          </h2>
           <form method="POST" action="edit.php?id=<?php echo $_GET['id']; ?>">
             <div class="form-group">
               <label>Quote Text</label>

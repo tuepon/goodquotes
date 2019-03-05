@@ -58,4 +58,16 @@
 
       header('Location: index.php');
     }
+
+    public function remove(int $id){
+      try{
+        $this->query('DELETE FROM quotes WHERE id = :id');
+        $this->bind(':id', $id);
+        $this->execute();
+      } catch(Throwable $e){
+        echo '<div class="alert alert-danger">'.get_class($e).' on line '.$e->getLine().' of '.$e->getFile().': '.$e->getMessage().'</div>';
+      }
+
+      header('Location: index.php');
+    }
   }
