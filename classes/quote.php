@@ -33,4 +33,29 @@
         header('Location: index.php');
       }
     }
+
+    public function getSingle(int $id):array{
+      try{
+        $this->query('SELECT * FROM quotes WHERE id = :id');
+        $this->bind(':id', $id);
+        $row = $this->single();
+        return $row;
+      } catch(Throwable $e){
+        echo '<div class="alert alert-danger">'.get_class($e).' on line '.$e->getLine().' of '.$e->getFile().': '.$e->getMessage().'</div>';
+      }
+    }
+
+    public function update(int $id, string $text, string $creator){
+      try{
+        $this->query('UPDATE quotes SET text = :text, creator = :creator WHERE id = :id');
+        $this->bind(':text', $text);
+        $this->bind(':creator', $creator);
+        $this->bind(':id', $id);
+        $this->execute();
+      } catch(Throwable $e){
+        echo '<div class="alert alert-danger">'.get_class($e).' on line '.$e->getLine().' of '.$e->getFile().': '.$e->getMessage().'</div>';
+      }
+
+      header('Location: index.php');
+    }
   }

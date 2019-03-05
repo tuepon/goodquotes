@@ -38,7 +38,7 @@
       <div class="row marketing">
         <div class="col-lg-12">
           <?php foreach($quotes as $q) : ?>
-            <h3><?php echo $q['text']; ?></h3>
+            <h3><a href="edit.php?id=<?php echo $q['id']; ?>"><?php echo $q['text']; ?></a></h3>
             <p><?php echo $q['creator']; ?></p>
           <?php endforeach; ?>
         </div>
